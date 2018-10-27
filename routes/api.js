@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const Product = require("../models/article.js");
+const Article = require("../models/article.js");
 
 router.post("/api/articles", function(req, res) {
     // as long as req.body matches what the model expects, this should insert into the database
@@ -20,7 +20,7 @@ router.post("/api/articles", function(req, res) {
     });
   });
 
-  app.delete("/api/articles/:id", function(req,res){
+  router.delete("/api/articles/:id", function(req,res){
     console.log(req.params.id)
     db.Article.findByIdAndRemove(req.params.id, function(err, response){
       // console.log(response)
@@ -30,6 +30,8 @@ router.post("/api/articles", function(req, res) {
     });
   });
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./client/build/index.html"));
+//   });
+
+module.exports = router;
